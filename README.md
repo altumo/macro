@@ -4,7 +4,7 @@ Overview
 
 Macro aims to see the big picture. 
 
-At the highest level, Macro aims to use a single source file to generate all things necessary for a modern web application. It does this in a way that is especially considerate of how that application will change over time. Thus, it has primary support for schema mutations, infrastructure mutations, and data mutations, in a way that provides first-class support for zero-downtime, rolling upgrades, blue/green deployments, and automatic canary deployments.
+At the highest level, Macro aims to use a single source file to generate all things necessary for a modern web application. It does this in a way that is especially considerate of how that application will change over time. Thus, it has primary support for schema mutations, infrastructure mutations, and data mutations, in a way that provides first-class support for zero-downtime, rolling upgrades, blue/green deployments, and automatic canary deployments. Macro strictly ensures that all mutations have both rollout and rollback logic, and only have [FULL_TRANSITIVE](https://docs.confluent.io/current/schema-registry/avro.html#summary) schema compatibility.
 
 Macro is many things. Primarily, it's an open-source (MIT License), modern c++, object-relational mapper (ORM).
 
