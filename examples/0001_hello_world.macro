@@ -1,0 +1,244 @@
+
+/*
+	This macro definition uses the system-defined types: Username, Password, Timestamp, LocalTimestamp, Uuid, GeoRegion, string, int32_t.
+
+	Parser is multi-pass, which means you can successfully define user-defined types out of order and define circular relationships.
+
+*/
+
+
+
+
+//semicolons are optional and valid
+//semicolons are required if you have multiple statements on a single line
+
+/*
+	Comments can be single-line or multiline.
+*/
+
+
+
+
+
+
+
+// Creates an application in the global namespace that contains a single module
+// A module is used to contain coarse-grained groupings of application functionality
+
+// An application corresponds to a docker image. You can define models outside of applications, and they'll be built as a shared library (if more than one application uses the same model).
+
+
+Application HelloWorld{
+
+	Module UserModule{
+
+		//Creates a User model in the global namespace
+		//This also automatically creates the (R)etrieve and (U)pdate endpoints (part of CRUD)
+
+		RU Model User{
+			unique Uuid user_id;
+			Username username;   //Username is implicitly 'unique Uuid'
+			string first_name;
+			string last_name;
+			Password password;
+			GeoRegion region;
+		};
+
+
+		Model UserSession{
+			unique Uuid user_session_id;
+			required Uuid user_id;
+			Timestamp created_at;
+			LocalTimestamp local_created_at;	
+		};
+
+
+		Model SignupRequest{
+			Uuid signup_request_id;
+			required string username;
+			string first_name;
+			string last_name;
+			required Password password;
+		};
+
+		Model SignupResponse{
+			Uuid signup_response_id;
+			Uuid signup_request_id;
+			int32_t result_code;
+			string result_message;
+			User user;
+			UserSession user_session;
+		};
+
+
+		Model LoginRequest{
+			Uuid login_request_id;
+			required string username;
+			required Password password;
+		};
+
+		Model LoginResponse{
+			Uuid login_response_id;
+			Uuid login_request_id;
+			int32_t result_code;
+			string result_message;
+			User user;
+			UserSession user_session;
+		};
+
+
+
+		Header main_anonymous_header{
+			Link{
+				Display "Home";
+				Target HomeWebPath;
+			};
+			Link{
+				Display "Login";
+				Target LoginWebPath;
+			};
+			Link{
+				Display "Signup";
+				Target SignupWebPath;
+			};
+		};
+
+		Footer main_anonymous_footer{
+			Link{
+				Display "Home";
+				Target HomeWebPath;
+			};
+			Link{
+				Display "Login";
+				Target LoginWebPath;
+			};
+			Link{
+				Display "Signup";
+				Target SignupWebPath;
+			};
+		};
+
+		Header main_authenticated_header{
+			Link{
+				Display "Home";
+				Target HomeWebPath;
+			};
+			Link{
+				Display "Logout";
+				Target LogoutWebPath;
+			};
+		};
+
+		Footer main_authenticated_footer{
+			Link{
+				Display "Home";
+				Target HomeWebPath;
+			};
+			Link{
+				Display "Logout";
+				Target LogoutWebPath;
+			};
+		};
+
+		WebTemplate main_template{
+
+			anonymous Header main_anonymous_header;
+			anonymous Footer main_anonymous_header;
+
+			authenticated Header main_authenicated_header;
+			authenticated Footer main_authenicated_header;
+
+		};
+
+
+		Web HomeWebPath{
+
+			WebTemplate main_template;
+
+			method GET;
+			path /;
+
+			Body "Welcome to the homepage.";
+
+		};
+
+
+		Web LogoutWebPath{
+
+			WebTemplate main_template;
+
+			method GET;
+			path /logout;
+
+			Body "You've been logged out.";
+
+		};
+
+
+
+		Web SignupWebPath{
+
+			Header main_anonymous_header;
+			Header main_anonymous_footer;
+
+			method GET;
+			path /signup;
+
+			Form SignupForm{
+				Model SignupRequest;
+				Endpoint POST /signup{
+					Request SignupRequest;
+					Response SignupResponse;
+				};
+			};
+
+		};
+
+
+
+		Web LoginWebPath{
+
+			Header main_anonymous_header;
+			Header main_anonymous_footer;
+
+			method GET;
+			path /login;
+
+			Form LoginForm{
+				Model LoginRequest;
+				Endpoint POST /login{
+					Request LoginRequest;
+					Response LoginResponse;
+				};
+			};
+
+		};
+
+
+		Model CancelAccountRequest{
+			Uuid cancel_account_request_id;
+			required string username;
+			required Password password;
+			required string challenge_password;
+		};
+
+		Model CancelAccountResponse{
+			Uuid cancel_account_response_id;
+			Uuid cancel_account_request_id;
+			int32_t result_code;
+			string result_message;
+		};
+
+
+		Endpoint POST /cancel-user-account{
+			Request CancelAccountRequest;
+			Response CancelAccountResponse;
+		};
+
+
+
+	};
+
+};
+
+
