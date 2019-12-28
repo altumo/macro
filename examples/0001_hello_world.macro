@@ -40,8 +40,8 @@ Application HelloWorld{
 			Username username;   //Username is implicitly 'unique Uuid'
 			string first_name;
 			string last_name;
-			Password password;
-			GeoRegion region;
+			Password password;   //the system-defined Password type is hash/salted for relational DB and redacted for streaming DB
+			GeoRegion region;    //auto-generated, by default
 		};
 
 
@@ -49,7 +49,7 @@ Application HelloWorld{
 			unique Uuid user_session_id;
 			required Uuid user_id;
 			Timestamp created_at;
-			LocalTimestamp local_created_at;	
+			LocalTimestamp local_created_at;
 		};
 
 
