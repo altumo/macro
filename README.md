@@ -11,7 +11,7 @@ Macro is many things. Primarily, it's an open-source (MIT License), modern c++, 
 However, it's also an application framework, with project generation that generates:
 
   - Projects with scaffolding, Kubernetes integration, and CircleCI integration.
-  - Models from existing relational schemas (Postgres - recommend CockroachDB bydefault).
+  - Models from existing relational schemas (Postgres - recommend CockroachDB by default).
   - Models from existing streaming schemas (Kafka - recommend Kafka by default).
   - Schema versioning service.
   - Infrastructure generation (AWS, Kubernetes, Istio, CoreOS operator for your application).
