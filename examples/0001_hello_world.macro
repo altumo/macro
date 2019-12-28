@@ -89,55 +89,25 @@ Application HelloWorld{
 
 
 		Header main_anonymous_header{
-			Link{
-				Display "Home";
-				Target HomeWebPath;
-			};
-			Link{
-				Display "Login";
-				Target LoginWebPath;
-			};
-			Link{
-				Display "Signup";
-				Target SignupWebPath;
-			};
+			Link{ Display "Home"; Target HomeWebPath; };
+			Link{ Display "Login"; Target LoginWebPath; };
+			Link{ Display "Signup"; Target SignupWebPath; };
 		};
 
 		Footer main_anonymous_footer{
-			Link{
-				Display "Home";
-				Target HomeWebPath;
-			};
-			Link{
-				Display "Login";
-				Target LoginWebPath;
-			};
-			Link{
-				Display "Signup";
-				Target SignupWebPath;
-			};
+			Link{ Display "Home"; Target HomeWebPath; };
+			Link{ Display "Login"; Target LoginWebPath; };
+			Link{ Display "Signup"; Target SignupWebPath; };
 		};
 
 		Header main_authenticated_header{
-			Link{
-				Display "Home";
-				Target HomeWebPath;
-			};
-			Link{
-				Display "Logout";
-				Target LogoutWebPath;
-			};
+			Link{ Display "Home"; Target HomeWebPath; };
+			Link{ Display "Logout"; Target LogoutWebPath; };
 		};
 
 		Footer main_authenticated_footer{
-			Link{
-				Display "Home";
-				Target HomeWebPath;
-			};
-			Link{
-				Display "Logout";
-				Target LogoutWebPath;
-			};
+			Link{ Display "Home"; Target HomeWebPath; };
+			Link{ Display "Logout"; Target LogoutWebPath; };
 		};
 
 		WebTemplate main_template{
