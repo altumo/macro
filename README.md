@@ -16,7 +16,7 @@ However, it's also an application framework, with project generation that genera
   - Schema versioning service.
   - Infrastructure generation (AWS, Kubernetes, Istio, CoreOS operator for your application).
   - [OpenAPI 3.0.2](https://swagger.io/docs/specification/about/) Document.
-  - c++ HTTP API Client.
+  - c++ HTTP API Client, native iOS HTTP API client (Swift), native Android HTTP API client (Java/Kotlin).
   - Integration tests.
   - Unit tests.
 
