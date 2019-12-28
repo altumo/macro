@@ -6,12 +6,15 @@ Macro is many things. Primarily, it's an open-source (MIT License), modern c++, 
 
 However, it's also an application framework, with project generation that generates:
 
-  - projects with scaffolding
-  - models from existing relational schemas (Postgres - recommend CockroachDB by default)
-  - models from existing streaming schemas (Kafka - recommend Kafka by default)
-  - schema versioning service
-  - infrastructure generation
-  - [OpenAPI 3.0.2](https://swagger.io/docs/specification/about/) Document
+  - Projects with scaffolding, Kubernetes integration, and CircleCI integration.
+  - Models from existing relational schemas (Postgres - recommend CockroachDB bydefault).
+  - Models from existing streaming schemas (Kafka - recommend Kafka by default).
+  - Schema versioning service.
+  - Infrastructure generation (AWS, Kubernetes, Istio, CoreOS operator for your application).
+  - [OpenAPI 3.0.2](https://swagger.io/docs/specification/about/) Document.
+  - c++ HTTP API Client.
+  - Integration tests.
+  - Unit tests.
 
 At the highest level, Macro aims to use a single source file to generate all things necessary for a modern web application. It does this in a way that is especially considerate of how that application will change over time. Thus, it has primary support for schema mutations, infrastructure mutations, and data mutations, in a way that provides first-class support for zero-downtime, rolling upgrades, blue/green deployments, and automatic canary deployments.
 
