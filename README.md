@@ -11,6 +11,7 @@ However, it's also an application framework, with project generation that genera
   - models from existing streaming schemas (Kafka - recommend Kafka by default)
   - schema versioning service
   - infrastructure generation
+  - [OpenAPI 3.0.2](https://swagger.io/docs/specification/about/) Document
 
 At the highest level, Macro aims to use a single source file to generate all things necessary for a modern web application. It does this in a way that is especially considerate of how that application will change over time. Thus, it has primary support for schema mutations, infrastructure mutations, and data mutations, in a way that provides first-class support for zero-downtime, rolling upgrades, blue/green deployments, and automatic canary deployments.
 
