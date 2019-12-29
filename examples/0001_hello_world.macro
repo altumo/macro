@@ -35,7 +35,7 @@ Application HelloWorld{
 		//Creates a User model in the global namespace
 		//This also automatically creates the (R)etrieve and (U)pdate endpoints (part of CRUD)
 
-		RU Model User{
+		Model User RU{
 			unique Uuid user_id;
 			Username username;   //Username is implicitly 'unique Uuid'
 			string first_name;
@@ -53,7 +53,7 @@ Application HelloWorld{
 		};
 
 
-		Model SignupRequest{
+		Model SignupRequest light{
 			Uuid signup_request_id;
 			required string username;
 			string first_name;
@@ -61,7 +61,7 @@ Application HelloWorld{
 			required Password password;
 		};
 
-		Model SignupResponse{
+		Model SignupResponse light{
 			Uuid signup_response_id;
 			Uuid signup_request_id;
 			int32_t result_code;
@@ -71,13 +71,13 @@ Application HelloWorld{
 		};
 
 
-		Model LoginRequest{
+		Model LoginRequest light{
 			Uuid login_request_id;
 			required string username;
 			required Password password;
 		};
 
-		Model LoginResponse{
+		Model LoginResponse light{
 			Uuid login_response_id;
 			Uuid login_request_id;
 			int32_t result_code;
@@ -110,7 +110,7 @@ Application HelloWorld{
 			Link{ Display "Logout"; Target LogoutWebPath; };
 		};
 
-		WebTemplate main_template{
+		WebTemplate main_template default {  //there can only be one default template
 
 			anonymous Header main_anonymous_header;
 			anonymous Footer main_anonymous_header;
@@ -121,38 +121,20 @@ Application HelloWorld{
 		};
 
 
-		Web HomeWebPath{
-
-			WebTemplate main_template;
-
-			method GET;
-			path /;
-
-			Body "Welcome to the homepage.";
-
+		Web HomeWebPath GET / {
+			Welcome to the homepage.
 		};
 
 
-		Web LogoutWebPath{
-
-			WebTemplate main_template;
-
-			method GET;
-			path /logout;
-
-			Body "You've been logged out.";
-
+		Web LogoutWebPath GET /logout {
+			You've been logged out.
 		};
 
 
 
-		Web SignupWebPath{
+		Web SignupWebPath GET /signup {
 
-			Header main_anonymous_header;
-			Header main_anonymous_footer;
-
-			method GET;
-			path /signup;
+			Please fill out this form.
 
 			Form SignupForm{
 				Model SignupRequest;
@@ -168,13 +150,9 @@ Application HelloWorld{
 
 
 
-		Web LoginWebPath{
+		Web LoginWebPath GET /login {
 
-			Header main_anonymous_header;
-			Header main_anonymous_footer;
-
-			method GET;
-			path /login;
+			Please enter your email and password to login.
 
 			Form LoginForm{
 				Model LoginRequest;
@@ -189,14 +167,14 @@ Application HelloWorld{
 		};
 
 
-		Model CancelAccountRequest{
+		Model CancelAccountRequest light{
 			Uuid cancel_account_request_id;
 			required string username;
 			required Password password;
 			required string challenge_password;
 		};
 
-		Model CancelAccountResponse{
+		Model CancelAccountResponse light{
 			Uuid cancel_account_response_id;
 			Uuid cancel_account_request_id;
 			int32_t result_code;
@@ -204,9 +182,7 @@ Application HelloWorld{
 		};
 
 
-		Endpoint cancel_user_account_endpoint{
-			method POST;
-			path /cancel-user-account;
+		Endpoint cancel_user_account_endpoint POST /cancel-user-account {
 			Request CancelAccountRequest;
 			Response CancelAccountResponse;
 		};
