@@ -35,7 +35,17 @@ set( MACRO_LIBS
 )
 
 set( MACRO_LIBRARY_SOURCES
+
     src/Macro.cc
+
+    src/read/PostgresReader.cc
+    
+    src/ast/Ast.cc
+
+    src/parse/MacroParser.cc
+
+    src/write/MacroWriter.cc
+
 )
 
 add_library( macro_static STATIC ${MACRO_LIBRARY_SOURCES} )

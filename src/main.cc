@@ -8,7 +8,7 @@ using std::endl;
 
 int main( int argc, char** argv ){
 	
-	Macro macro( argc, argv );
+	macro::Macro macro( argc, argv );
 
 	macro.run();
 

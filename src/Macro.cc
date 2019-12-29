@@ -11,23 +11,26 @@ using std::cout;
 using std::endl;
 
 
-Macro::Macro( int, char** ){
+namespace macro{
+
+	Macro::Macro( int, char** ){
+
+
+	}
+
+
+
+	void Macro::run(){
+
+		json running_dialogue{
+			{ "hey", "there" },
+			{ "how", "are" },
+			{ "you", "!" }
+		};
+
+		cout << running_dialogue.dump(4) << endl;
+
+	}
 
 
 }
-
-
-
-void Macro::run(){
-
-	json running_dialogue{
-		{ "hey", "there" },
-		{ "how", "are" },
-		{ "you", "!" }
-	};
-
-	cout << running_dialogue.dump(4) << endl;
-
-}
-
-

@@ -7,11 +7,15 @@ using std::string;
 using std::vector;
 
 
-class Macro{
-	
-	public:
-		Macro( int argc, char** argv );
+namespace macro{
 
-		void run();
+	class Macro{
+		
+		public:
+			Macro( int argc, char** argv );
 
-};
+			void run();
+
+	};
+
+}
