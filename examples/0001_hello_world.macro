@@ -156,7 +156,9 @@ Application HelloWorld{
 
 			Form SignupForm{
 				Model SignupRequest;
-				Endpoint POST /signup{
+				Endpoint signup_endpoint{
+					method POST;
+					path /signup;
 					Request SignupRequest;
 					Response SignupResponse;
 				};
@@ -176,7 +178,9 @@ Application HelloWorld{
 
 			Form LoginForm{
 				Model LoginRequest;
-				Endpoint POST /login{
+				Endpoint login_endpoint{
+					method POST;
+					path /login;
 					Request LoginRequest;
 					Response LoginResponse;
 				};
@@ -200,7 +204,9 @@ Application HelloWorld{
 		};
 
 
-		Endpoint POST /cancel-user-account{
+		Endpoint cancel_user_account_endpoint{
+			method POST;
+			path /cancel-user-account;
 			Request CancelAccountRequest;
 			Response CancelAccountResponse;
 		};

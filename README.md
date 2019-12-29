@@ -22,7 +22,7 @@ However, it's also an application framework, with project generation that genera
 
 Macro was heavily influenced by [PropelORM](http://propelorm.org), so it automatically builds Query objects for each model so that you can be very productive, creating extensible queries and use [Query Embedding](http://propelorm.org/documentation/04-relationships.html). 
 
-Macro models are dual purpose: they can be used with relational databases, streaming databases, or both (the default). By default, all data mutations are committed to the source of true (the highly-consistent relation database), then published to the streaming database with exactly-once semantics to implement [CDC](https://en.wikipedia.org/wiki/Change_data_capture), even if your relational database does not support [CDC](https://en.wikipedia.org/wiki/Change_data_capture).
+Macro models are dual purpose: they can be used with relational databases, streaming databases, or both (the default). By default, all data mutations are committed to the source of truth (the highly-consistent relation database), then published to the streaming database with exactly-once semantics to implement [CDC](https://en.wikipedia.org/wiki/Change_data_capture), even if your relational database does not support [CDC](https://en.wikipedia.org/wiki/Change_data_capture) yet.
 
 Macro aims to contain a rich set of examples because *examples are excellent documentation*. If you find that your usage of Macro is not well-represented by the existing examples, please open an issue, and we'll do our best to create an example that helps others easily learn your use case or apply your use case in their projects. Thanks, in advance, for taking the time to create an issue!
 
