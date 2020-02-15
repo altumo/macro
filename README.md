@@ -1,5 +1,5 @@
 
-[![CircleCI](https://circleci.com/gh/altumo/macro.svg?style=svg)](https://circleci.com/gh/altumo/macro)
+Build Status: [![CircleCI](https://circleci.com/gh/altumo/macro.svg?style=svg)](https://circleci.com/gh/altumo/macro)
 
 Overview
 --------
