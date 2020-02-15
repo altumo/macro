@@ -28,12 +28,23 @@ Macro aims to contain a rich set of examples because *examples are excellent doc
 
 
 
-Build
------
+Build MacOS
+-----------
 
 ```
 brew install openssl
 brew unlink openssl && brew link openssl --force
+cmake .
+make
+./build/macro
+```
+
+
+Build Ubuntu
+------------
+
+```
+apt install gcc g++ cmake pkg-config libssl-dev
 cmake .
 make
 ./build/macro
